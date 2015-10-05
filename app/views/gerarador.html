@@ -1,0 +1,16 @@
+{{gerador.sprint}}
+<form name="formGerador">
+	<md-datepicker ng-model="gerador.sprint.dataInicio" md-placeholder="Data do início do Sprint"
+		md-min-date="gerador.dataMin" md-max-date="gerador.dataMax" required></md-datepicker>
+	<md-input-container>
+	  <label>Quantidade de dias</label>
+	  <input ng-model="gerador.sprint.dias" type="number" max="14" min="1" required>
+	</md-input-container>
+	<md-input-container>
+	  <label>Quantidade de pontos</label>
+	  <input ng-model="gerador.sprint.pontos" type="number" max="999" min="1" required>
+	</md-input-container>	
+</form>
+<md-button class="md-fab" aria-label="Eat cake" ng-disabled="formGerador.$invalid">
+    <md-icon md-svg-src="images/icons/ic_add_white_24px.svg">Add Estoria</md-icon>
+</md-button>
