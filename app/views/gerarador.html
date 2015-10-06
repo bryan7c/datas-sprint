@@ -1,24 +1,58 @@
 
 <form name="formGerador">
-	<md-datepicker ng-model="gerador.sprint.dataInicio" md-placeholder="Data do início do Sprint"
-		md-min-date="gerador.dataMin" md-max-date="gerador.dataMax" required></md-datepicker>
-	<md-input-container>
-	  <label>Quantidade de dias</label>
-	  <input ng-model="gerador.sprint.dias" type="number" max="14" min="1" required>
-	</md-input-container>
-	<md-input-container>
-	  <label>Quantidade de pontos</label>
-	  <input ng-model="gerador.sprint.pontos" type="number" max="999" min="1" required>
-	</md-input-container>   
+	<div layout="row" layout-align="center center">
+		<div flex="33">
+			<md-datepicker ng-model="gerador.sprint.dataInicio" md-placeholder="Data do início do Sprint"
+				md-min-date="gerador.dataMin" md-max-date="gerador.dataMax" required></md-datepicker>
+			
+		</div>
+		<div flex>
+			<md-input-container>
+			  <label>Quantidade de dias</label>
+			  <input ng-model="gerador.sprint.dias" type="number" max="14" min="1" required ng-init="1">
+			</md-input-container>
+		</div>
+	</div>
+	<div layout="row" layout-align="center center">
+		<div flex="33">
+			<md-datepicker ng-model="gerador.sprint.dataFim" md-placeholder="Data do fim do Sprint"
+				disabled></md-datepicker>
+		</div>
+		<div flex>
+			<md-input-container>
+			  <label>Quantidade de pontos</label>
+			  <input ng-model="gerador.sprint.pontos" type="number" max="999" min="1" disabled>
+			</md-input-container>
+		</div>
+	</div>
 </form>
-<md-button class="md-fab" aria-label="Eat cake" ng-disabled="formGerador.$invalid" ng-click="gerador.adicionarEstoria()">
-	<md-icon md-svg-src="images/icons/ic_add_white_24px.svg">Add Estoria</md-icon>
-	<md-tooltip>
-	  Adicionar estoria
-	</md-tooltip>
-</md-button>
-{{gerador.sprint}}
 
+<table class="table table-striped" ng-if="gerador.sprint.estorias">
+	<thead>
+		<tr>
+			<th>Estoria</th>
+			<th>Pontos</th>
+			<th>Tasks</th>
+			<th>Data de entrega</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="estoria in gerador.sprint.estorias">
+			<td>{{estoria.nome}}</td>
+			<td>{{estoria.pontos}}</td>
+			<td>{{estoria.tasks}}</td>
+			<td>{{estoria.data}}</td>
+		</tr>
+	</tbody>
+</table>
+<div layout="row" layout-align="end end">
+	<md-button class="md-fab" aria-label="Eat cake" ng-disabled="formGerador.$invalid" ng-click="gerador.iniciarInclusao()">
+		<md-icon md-svg-src="images/icons/ic_add_white_24px.svg">Add Estoria</md-icon>
+		<md-tooltip>
+		  Adicionar estoria
+		</md-tooltip>
+	</md-button>
+</div>
 <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
 	<md-toolbar class="md-theme-light">
 		<h1 class="md-toolbar-tools">Sidenav Right</h1>
@@ -26,19 +60,19 @@
 	<md-content layout-padding>
 		<form name="formEstoria">
 			<md-input-container>
-				<label for="testInput">Estoria</label>
-				<input type="text" id="testInput" ng-model="gerador.estoria.nome" md-autofocus>
+				<label for="nome">Estoria</label>
+				<input type="text" name="nome" id="nome" ng-model="gerador.estoria.nome" md-autofocus>
 			</md-input-container>
 			<md-input-container>
-				<label for="testInput">Pontos</label>
-				<input type="number" id="testInput" ng-model="gerador.estoria.pontos" required>
+				<label for="pontos">Pontos</label>
+				<input type="number" name="pontos" id="pontos" ng-model="gerador.estoria.pontos" required>
 			</md-input-container>
 			<md-input-container>
-				<label for="testInput">Quantidade de tasks</label>
-				<input type="number" id="testInput" ng-model="gerador.estoria.tasks" required>
+				<label for="tasks">Quantidade de tasks</label>
+				<input type="number" name="tasks" id="tasks" ng-model="gerador.estoria.tasks" required>
 			</md-input-container>
 		</form>
-		<md-button ng-click="gerador.closeNav()" ng-disabled="formEstoria.$invalid">
+		<md-button ng-click="gerador.closeNav()">
 			Cancelar
 		</md-button>
 		<md-button ng-click="gerador.adicionarEstoria(gerador.estoria)" class="md-primary" ng-disabled="formEstoria.$invalid">

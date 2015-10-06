@@ -1,37 +1,81 @@
 'use strict';
 
 /**
- * @ngdoc service
- * @name datasSprintApp.sprintAPI
- * @description
- * # sprintAPI
- * Factory in the datasSprintApp.
- */
+* @ngdoc service
+* @name datasSprintApp.SprintAPI
+* @description
+* # SprintAPI
+* Factory in the datasSprintApp.
+*/
 angular.module('datasSprintApp')
-  .factory('sprintAPI', function (dateUtil) {
-    var _sprint = {}
+.factory('SprintAPI', function (dateUtil) {
 
-    var _init = function(sprint){
-      _sprint = sprint;
-      _sprint.dataFim = dateUtil.incrementDay(_sprint.dataInicio, _sprint.dias);
-      _sprint.diasParaFim = dateUtil.intervalDay(_sprint.dataInicio, _sprint.dataFim);
-      _sprint.estorias = [];
-      return _sprint
-    }
+	var _sprint = {};
+	_sprint.usarDiasUteis = false;
 
-    var _add = function(estoria){
-      //estoria.nome = estoria.nome || "story-" + this.sprint.estorias.length() + 1
-      _sprint.estorias.push(estoria);
-    }
+	var _init = function(sprint, diasUteis){
+		_sprint.dataInicio = sprint.dataInicio;
+		_sprint.dias = sprint.dias;
+		_sprint.usarDiasUteis = diasUteis;
 
-    var _listEstoria = function(){
-      return _sprint.estorias;
-    }
+		gerarDataFim();
+	}
 
-    // Public API here
-    return {
-      init: _init,
-      add: _add,
-      listEstoria: _listEstoria
-    };
-  });
+	var _addEstoria = function(estoria){
+		if(estoria){
+			if(!_sprint.estorias){
+				_sprint.estorias = [];
+			}
+			estoria.nome = estoria.nome || "story-" + _sprint.estorias.length + 1;
+			_sprint.estorias.push(estoria);
+			updatePontos();
+		}
+	}
+
+	//==============  Getters  ================
+
+	var _getPontos = function(){
+		return _sprint.pontos;
+	}
+
+	var _getSprint = function(){
+		return _sprint;
+	}
+
+	var _getDataFim = function(){
+		return _sprint.dataFim;
+	}
+
+	var _getEstorias = function(){
+		return _sprint.estorias;
+	}
+
+	var setPontos = function(pontos){
+		_sprint.pontos = pontos;
+	}
+
+	//==============  Local functions  ================
+
+	var gerarDataFim = function(sprint) {
+		_sprint.dataFim = dateUtil.incrementDay(_sprint.dataInicio, _sprint.dias, _sprint.usarDiasUteis);
+	}
+
+	var updatePontos = function(){
+		var sum = 0;
+		_sprint.estorias.forEach(function(element,key){
+			sum = sum + element.pontos;
+		});
+
+		setPontos(sum);
+	}
+
+	// Public API here
+	return {
+		init: _init,
+		getSprint: _getSprint,
+		addEstoria: _addEstoria,
+		getEstorias: _getEstorias,
+		getDataFim: _getDataFim,
+		getPontos: _getPontos
+	};
+});

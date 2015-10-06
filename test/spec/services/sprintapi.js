@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: sprintAPI', function () {
+describe('Service: SprintAPI', function () {
 
   // load the service's module
   beforeEach(module('datasSprintApp'));
 
   // instantiate service
-  var sprintAPI;
-  beforeEach(inject(function (_sprintAPI_) {
-    sprintAPI = _sprintAPI_;
+  var SprintAPI;
+  beforeEach(inject(function (_SprintAPI_) {
+    SprintAPI = _SprintAPI_;
   }));
 
   it('should do something', function () {
-    expect(!!sprintAPI).toBe(true);
+    expect(!!SprintAPI).toBe(true);
   });
 
 });
