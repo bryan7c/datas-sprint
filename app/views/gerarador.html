@@ -41,7 +41,7 @@
 			<td>{{estoria.nome}}</td>
 			<td>{{estoria.pontos}}</td>
 			<td>{{estoria.tasks}}</td>
-			<td>{{estoria.data}}</td>
+			<td>{{estoria.data |  date: 'dd/MM'}}</td>
 		</tr>
 	</tbody>
 </table>
@@ -55,7 +55,7 @@
 </div>
 <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
 	<md-toolbar class="md-theme-light">
-		<h1 class="md-toolbar-tools">Sidenav Right</h1>
+		<h1 class="md-toolbar-tools">Adicionar Estoria</h1>
 	</md-toolbar>
 	<md-content layout-padding>
 		<form name="formEstoria">

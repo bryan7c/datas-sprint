@@ -8,7 +8,7 @@
 	* Controller of the datasSprintApp
 	*/
 	angular.module('datasSprintApp')
-	.controller('GeraradorCtrl', ['$scope','SprintAPI','$mdSidenav', function ($scope, SprintAPI, $mdSidenav) {
+	.controller('GeraradorCtrl', ['$scope','SprintAPI','$mdSidenav','$filter', function ($scope, SprintAPI, $mdSidenav, $filter) {
 		this.awesomeThings = [
 		'HTML5 Boilerplate',
 		'AngularJS',
