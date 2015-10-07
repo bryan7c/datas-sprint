@@ -55,13 +55,13 @@
 			.highlightAction(false)
 			.position("top right");
 		
-		$mdToast.show(toast)
+		$mdToast.show(toast);
 		/*.then(function(response) {
 			if ( response == 'ok' ) {
 				alert('You clicked \'OK\'.');
 			}
 		});*/
-	};
+	}
 
 	//============= Story functions =================
 
@@ -72,12 +72,12 @@
 		this.estoria = {};
 		$scope.formEstoria.$setUntouched();
 		formEstoria.nome.focus();
-	}
+	};
 
 	this.iniciarInclusao = function(){
 		atualizarSprint();
 		openNav();
-	}
+	};
 
 	//============= Local functions =================
 	function atualizarSprint(){
@@ -85,13 +85,9 @@
 		$scope.gerador.sprint = SprintAPI.getSprint();
 	}
 
-	function iniciarSprint(){
-		this.sprint.init();
-	}
-
-	function toggleNav(){
+	/*function toggleNav(){
 		$mdSidenav('right').toggle();
-	}
+	}*/
 
 	function closeNav(){
 		$mdSidenav('right').close()
@@ -112,7 +108,8 @@
 	}, true);
 
 	$scope.$watch("gerador.sprint.feriado", function(){
-		if($scope.gerador.sprint.feriado)
+		if($scope.gerador.sprint.feriado){
 			showActionToast("Este sprint contém um feriado!");
+		}
 	}, true);
 }]);

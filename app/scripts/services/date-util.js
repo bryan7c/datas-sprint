@@ -13,7 +13,7 @@ angular.module('datasSprintApp')
     var holidayDetail = [],
     	holidayDateStringList = [];
 
-    $http.get("http://services.sapo.pt/Holiday/GetNationalHolidays?year=2015").success(function(data,status){
+    $http.get("http://services.sapo.pt/Holiday/GetNationalHolidays?year=2015").success(function(data){
 		parserFeriados(data);
 	});
 
@@ -22,7 +22,7 @@ angular.module('datasSprintApp')
 	function parserFeriados (data) {
 		var parser = new DOMParser();
 		var xmlDoc = parser.parseFromString(data,"text/xml");
-		var xmlDoc = xmlDoc.getElementsByTagName("Holiday");
+		xmlDoc = xmlDoc.getElementsByTagName("Holiday");
 
 		for(var i = 0; i < xmlDoc.length; i++){
 			holidayDetail.push({
@@ -38,7 +38,7 @@ angular.module('datasSprintApp')
     	uteis = uteis || false;
     	this.hasHoliday = false;
     	var aux = new Date(data);
-    	var increment = 0;
+    	//var increment = 0;
 
     	if(dias > 0){
 			
@@ -48,7 +48,7 @@ angular.module('datasSprintApp')
     		while(diasAdd < dias){
     			aux.setDate(aux.getDate()+1);
     			if(uteis){
-	    			if(aux.getDay() == 0 || aux.getDay() == 6){
+	    			if(aux.getDay() === 0 || aux.getDay() === 6){
 	    				continue;
 	    			}
 	    		}
@@ -79,13 +79,13 @@ angular.module('datasSprintApp')
     		}*/
 		}
     	return aux;
-    }
+    };
 
     function isHoliday(date){
     	try{
-    		if(date == "") throw "empty";
-    		if(!date) throw "Not is valid";
-    		if(date.constructor.name != "Date") throw "Not is a Date type";
+    		if(date === ""){ throw "empty";}
+    		if(!date){ throw "Not is valid";}
+    		if(date.constructor.name !== "Date"){ throw "Not is a Date type";}
 
     		var dateString = date.toISOString();
     		return holidayDateStringList.indexOf(dateString.substring(0,11) + "00:00:00");
@@ -103,9 +103,9 @@ angular.module('datasSprintApp')
 
 		if(uteis){
 			var diasInterval = 0;
-    		while(dataIni != dataFim){
+    		while(dataIni !== dataFim){
     			dataIni.setDate(dataIni.getDate()+1);
-    			if(dataIni.getDay() == 0 || dataIni.getDay() == 6){
+    			if(dataIni.getDay() === 0 || dataIni.getDay() === 6){
     				continue;
     			}
     			diasInterval++;
@@ -123,5 +123,5 @@ angular.module('datasSprintApp')
 		}
 
 		return dias;
-    }
+    };
   });
