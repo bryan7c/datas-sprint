@@ -18,6 +18,7 @@
 		this.sprint = {};
 		this.sprint.dataInicio = new Date();
 		this.sprint.dias = 1;
+		this.sprint.usarDiasUteis = true;
 
 		this.dataMax = new Date(
 			this.sprint.dataInicio.getFullYear(),
@@ -31,7 +32,7 @@
 			this.sprint.dataInicio.getDate() - 3
 			);
 
-		SprintAPI.init(this.sprint, true);
+		SprintAPI.init(this.sprint);
 		this.sprint = SprintAPI.getSprint();
 
 	//============= Nav functions =================
@@ -62,7 +63,7 @@
 
 	//============= Local functions =================
 	function atualizarSprint(){
-		SprintAPI.init($scope.gerador.sprint, true);
+		SprintAPI.init($scope.gerador.sprint);
 		$scope.gerador.sprint = SprintAPI.getSprint();
 	}
 
@@ -88,8 +89,9 @@
 		});
 	}
 
-	$scope.$watch("sprint", function(){
-		console.log("something has changed");
+	$scope.$watch("gerador.sprint", function(){
+		atualizarSprint();
+		console.log("oi");
 	}, true);
 
 }]);

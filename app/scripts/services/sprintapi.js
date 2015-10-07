@@ -15,10 +15,10 @@ angular.module('datasSprintApp')
 	var pontosPorDia;
 	var pontoSobraDia;
 
-	var _init = function(sprint, diasUteis){
+	var _init = function(sprint){
 		_sprint.dataInicio = sprint.dataInicio;
 		_sprint.dias = sprint.dias;
-		_sprint.usarDiasUteis = diasUteis;
+		_sprint.usarDiasUteis = sprint.usarDiasUteis;
 		_sprint.pontos = 1;
 		setPontosPorDia(_sprint.pontos / _sprint.dias);
 		gerarDataFim();

@@ -4,14 +4,18 @@
 		<div flex="33">
 			<md-datepicker ng-model="gerador.sprint.dataInicio" md-placeholder="Data do início do Sprint"
 				md-min-date="gerador.dataMin" md-max-date="gerador.dataMax" required></md-datepicker>
-			
 		</div>
 		<div flex>
 			<md-input-container>
 			  <label>Quantidade de dias</label>
-			  <input ng-model="gerador.sprint.dias" type="number" max="14" min="1" required ng-init="1">
+			  <input ng-model="gerador.sprint.dias" type="number" max="14" min="1" required>
 			</md-input-container>
 		</div>
+		<div flex="30">
+	        <md-checkbox ng-model="gerador.sprint.usarDiasUteis" aria-label="Usar dias úteis">
+	        	Considerar dias úteis
+	        </md-checkbox>
+     	</div>
 	</div>
 	<div layout="row" layout-align="center center">
 		<div flex="33">

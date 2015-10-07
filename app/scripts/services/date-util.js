@@ -17,13 +17,9 @@ angular.module('datasSprintApp')
     	uteis = uteis || false;
     	var aux = new Date(data);
 
-    	if(uteis){
-			var i = data.getDay() + dias;
-			switch(true){
-				case i >= 6:
-					dias = dias + 2;
-					break;
-			}
+    	if(uteis && dias > 0){
+			var increment = parseInt((data.getDay() + dias) / 6) * 2;
+			dias = dias + increment;
 		}
 
     	aux.setDate(data.getDate()+dias);
