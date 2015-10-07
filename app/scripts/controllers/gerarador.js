@@ -8,7 +8,7 @@
 	* Controller of the datasSprintApp
 	*/
 	angular.module('datasSprintApp')
-	.controller('GeraradorCtrl', ['$scope','SprintAPI','$mdSidenav','$filter', function ($scope, SprintAPI, $mdSidenav, $filter) {
+	.controller('GeraradorCtrl', ['$scope','SprintAPI','$mdSidenav','$filter', '$mdToast', function ($scope, SprintAPI, $mdSidenav, $filter, $mdToast) {
 		this.awesomeThings = [
 		'HTML5 Boilerplate',
 		'AngularJS',
@@ -43,6 +43,24 @@
 
 	this.openNav = function () {
 		openNav();
+	};
+
+	//============= Toast functions =================
+
+	function showActionToast(text) {
+		text = text || "Deu zica";
+		var toast = $mdToast.simple()
+			.content(text)
+			.action('OK')
+			.highlightAction(false)
+			.position("top right");
+		
+		$mdToast.show(toast)
+		/*.then(function(response) {
+			if ( response == 'ok' ) {
+				alert('You clicked \'OK\'.');
+			}
+		});*/
 	};
 
 	//============= Story functions =================
@@ -91,7 +109,10 @@
 
 	$scope.$watch("gerador.sprint", function(){
 		atualizarSprint();
-		console.log("oi");
 	}, true);
 
+	$scope.$watch("gerador.sprint.feriado", function(){
+		if($scope.gerador.sprint.feriado)
+			showActionToast("Este sprint contém um feriado!");
+	}, true);
 }]);

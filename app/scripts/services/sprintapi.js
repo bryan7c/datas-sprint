@@ -20,6 +20,7 @@ angular.module('datasSprintApp')
 		_sprint.dias = sprint.dias;
 		_sprint.usarDiasUteis = sprint.usarDiasUteis;
 		_sprint.pontos = 1;
+		_sprint.feriado = dateUtil.hasHoliday;
 		setPontosPorDia(_sprint.pontos / _sprint.dias);
 		gerarDataFim();
 
