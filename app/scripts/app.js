@@ -22,7 +22,7 @@ angular
   ])
   .config(function ($routeProvider) {
 	$routeProvider
-	  .when('/gerador', {
+	  .when('/main', {
 		templateUrl: 'views/main.html',
 		controller: 'MainCtrl',
 		controllerAs: 'main'
@@ -33,6 +33,11 @@ angular
 		controllerAs: 'about'
 	  })
 	  .when('/', {
+		templateUrl: 'views/gerarador.html',
+		controller: 'GeraradorCtrl',
+		controllerAs: 'gerador'
+	  })
+	  .when('/gerador', {
 		templateUrl: 'views/gerarador.html',
 		controller: 'GeraradorCtrl',
 		controllerAs: 'gerador'
