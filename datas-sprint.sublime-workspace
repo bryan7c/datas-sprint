@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"dias",
+				"diasParaFim"
+			],
+			[
+				"sp",
+				"sprint"
+			],
+			[
+				"estor",
+				"estoria"
+			],
+			[
 				"Hello",
 				"HelloMessage"
 			],
@@ -59,14 +71,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "/C/wamp/www/listaTelefonica/index.html",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -79,7 +83,10 @@
 	},
 	"console":
 	{
-		"height": 0.0
+		"height": 0.0,
+		"history":
+		[
+		]
 	},
 	"distraction_free":
 	{
@@ -92,9 +99,12 @@
 	},
 	"file_history":
 	[
+		"/C/wamp/www/listaTelefonica/index.html",
+		"/C/wamp/www/datas-sprint/app/scripts/app.js",
+		"/C/wamp/www/datas-sprint/app/scripts/services/sprintapi.js",
+		"/C/wamp/www/datas-sprint/app/scripts/controllers/gerarador.js",
 		"/C/wamp/www/flux/index.html",
 		"/C/wamp/www/fast-angular/index.html",
-		"/C/wamp/www/listaTelefonica/index.html",
 		"/C/wamp/www/flux/js/components/CreateSprint.react.js",
 		"/C/Users/Bryan/AppData/Local/Temp/7zE003A3142/index.html",
 		"/C/Users/Bryan/AppData/Local/Temp/7zO003C5872/example.js",
@@ -190,7 +200,7 @@
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 23.0
 	},
 	"find_in_files":
 	{
@@ -205,6 +215,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"_sprint.",
 			"activate",
 			"=",
 			"span",
@@ -285,39 +296,12 @@
 		{
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "/C/wamp/www/listaTelefonica/index.html",
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 0.0
+		"height": 23.0
 	},
 	"input":
 	{
@@ -346,9 +330,14 @@
 		]
 	},
 	"menu_visible": true,
-	"replace":
+	"output.find_results":
 	{
 		"height": 0.0
+	},
+	"project": "datas-sprint.sublime-project",
+	"replace":
+	{
+		"height": 42.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -356,6 +345,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"sprint",
+				"app/scripts/services/sprintapi.js"
+			],
 			[
 				"uida",
 				"js/directives/uiDateDirective.js"
@@ -423,10 +416,24 @@
 		],
 		"width": 380.0
 	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
 	"side_bar_width": 210.0,
-	"status_bar_visible": true
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
 }

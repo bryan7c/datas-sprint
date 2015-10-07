@@ -70,36 +70,18 @@ angular.module('datasSprintApp')
 	//==============  Local functions  ================
 
 	var calcularDatas = function(){
-		pontoSobraDia = pontosPorDia;
+		var pontosDoDia = pontosPorDia;
 		var auxData = angular.copy(_sprint.dataInicio);
 			//auxData.setDate(auxData.getDate());
 
 		_sprint.estorias.forEach(function(element){
-			var auxPontos = pontoSobraDia - element.pontos;
-			var diasNecessarios = 0;
-
-			if(auxPontos <= 0){
-				var q = (element.pontos/pontosPorDia)-1;
-				var	x = (q*pontosPorDia)+pontoSobraDia;
-
-				if(x > element.pontos)
-					diasNecessarios = q;
-				else
-					diasNecessarios = q+1;
-
-				pontoSobraDia = pontoSobraDia + (pontosPorDia * diasNecessarios);
+			while(element.pontos >= pontosDoDia){
+				pontosDoDia = pontosDoDia + pontosPorDia;
+				auxData = dateUtil.incrementDay(auxData,1,_sprint.usarDiasUteis)
 			}
-
-			element.data = dateUtil.incrementDay(auxData, diasNecessarios, _sprint.usarDiasUteis);
-
-			if(_sprint.pontos < _sprint.dias){
-				element.data = _sprint.dataFim;
-			}
-
-			auxData = element.data;
-			pontoSobraDia = pontoSobraDia - element.pontos;
+			pontosDoDia = pontosDoDia - element.pontos;
+			element.data = auxData;
 		});
-		auxData = 0;
 	}
 
 	var gerarDataFim = function(sprint) {
