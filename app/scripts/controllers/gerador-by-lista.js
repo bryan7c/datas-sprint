@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name datasSprintApp.controller:ContactCtrl
+ * @name datasSprintApp.controller:GeradorByListaCtrl
  * @description
- * # ContactCtrl
+ * # GeradorByListaCtrl
  * Controller of the datasSprintApp
  */
 angular.module('datasSprintApp')
-  .controller('ContactCtrl', function () {
+  .controller('GeradorByListaCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

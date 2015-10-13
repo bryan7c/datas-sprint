@@ -1,26 +1,26 @@
 
 <form name="formGerador">
 	<div layout="row" layout-wrap layout-align="space-between center">
-		<div flex="30" flex-order="1" flex-sm="55">
+		<div flex="30" flex-order="1" flex-sm="60">
 			<md-datepicker ng-model="gerador.sprint.dataInicio" md-placeholder="Data do início do Sprint"
 				md-min-date="gerador.dataMin" md-max-date="gerador.dataMax" required></md-datepicker>
 		</div>
-		<div flex="40" flex-order="2" flex-sm="45">
+		<div flex="40" flex-order="2" flex-sm="40">
 			<md-input-container>
 			  <label>Quantidade de dias</label>
 			  <input ng-model="gerador.sprint.dias" type="number" max="14" min="1" required>
 			</md-input-container>
 		</div>
-		<div flex="26" flex-order="3" flex-sm="100">
+		<div flex="30" flex-order="3" flex-sm="100">
 	        <md-checkbox ng-model="gerador.sprint.usarDiasUteis" aria-label="Usar dias úteis">
 	        	Considerar dias úteis
 	        </md-checkbox>
      	</div>
-		<div flex="30" flex-order="4" flex-sm="55">
+		<div flex="30" flex-order="4" flex-sm="60">
 			<md-datepicker ng-model="gerador.sprint.dataFim" md-placeholder="Data do fim do Sprint"
 				disabled></md-datepicker>
 		</div>
-		<div flex="70" flex-order="5" flex-sm="45">
+		<div flex="70" flex-order="5" flex-sm="40">
 			<md-input-container>
 			  <label>Quantidade de pontos</label>
 			  <input ng-model="gerador.sprint.pontos" type="number" max="999" min="1" disabled>

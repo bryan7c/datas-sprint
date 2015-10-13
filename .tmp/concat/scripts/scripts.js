@@ -22,34 +22,34 @@ angular
   ])
   .config(["$routeProvider", function ($routeProvider) {
 	$routeProvider
-	  .when('/main', {
+	.when('/main', {
 		templateUrl: 'views/main.html',
 		controller: 'MainCtrl',
 		controllerAs: 'main'
-	  })
-	  .when('/about', {
+	})
+	.when('/about', {
 		templateUrl: 'views/about.html',
 		controller: 'AboutCtrl',
 		controllerAs: 'about'
-	  })
-	  .when('/', {
+	})
+	.when('/', {
 		templateUrl: 'views/gerarador.html',
 		controller: 'GeraradorCtrl',
 		controllerAs: 'gerador'
-	  })
-	  .when('/gerador', {
+	})
+	.when('/gerador', {
 		templateUrl: 'views/gerarador.html',
 		controller: 'GeraradorCtrl',
 		controllerAs: 'gerador'
-	  })
-	  .when('/contact', {
-		templateUrl: 'views/contact.html',
-		controller: 'ContactCtrl',
-		controllerAs: 'contact'
-	  })
-	  .otherwise({
+	})
+	.when('/gerador-by-lista', {
+		templateUrl: 'views/gerador-by-lista.html',
+		controller: 'GeradorByListaCtrl',
+		controllerAs: 'geradorByLista'
+	})
+	.otherwise({
 		redirectTo: '/gerador'
-	  });
+	});
   }]);
 
 'use strict';
@@ -67,6 +67,18 @@ angular.module('datasSprintApp')
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
+    ];
+    this.menu = [
+    	{
+    		title: "Criar Sprint",
+    		active: false,
+    		link: "#/gerador"
+    	},
+    	{
+    		title: "Gerar por lista",
+    		active: false,
+    		link: "#/gerador-by-lista"
+    	}
     ];
   });
 
@@ -318,24 +330,6 @@ angular.module('datasSprintApp')
 'use strict';
 
 /**
- * @ngdoc function
- * @name datasSprintApp.controller:ContactCtrl
- * @description
- * # ContactCtrl
- * Controller of the datasSprintApp
- */
-angular.module('datasSprintApp')
-  .controller('ContactCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
-
-'use strict';
-
-/**
  * @ngdoc service
  * @name datasSprintApp.dateUtil
  * @description
@@ -461,6 +455,24 @@ angular.module('datasSprintApp')
     };
   }]);
 
+'use strict';
+
+/**
+ * @ngdoc function
+ * @name datasSprintApp.controller:GeradorByListaCtrl
+ * @description
+ * # GeradorByListaCtrl
+ * Controller of the datasSprintApp
+ */
+angular.module('datasSprintApp')
+  .controller('GeradorByListaCtrl', function () {
+    this.awesomeThings = [
+      'HTML5 Boilerplate',
+      'AngularJS',
+      'Karma'
+    ];
+  });
+
 angular.module('datasSprintApp').run(['$templateCache', function($templateCache) {
   'use strict';
 
@@ -469,13 +481,13 @@ angular.module('datasSprintApp').run(['$templateCache', function($templateCache)
   );
 
 
-  $templateCache.put('views/contact.html',
-    "<p>This is the contact view.</p>"
+  $templateCache.put('views/gerador-by-lista.html',
+    "<p>This is the gerador-by-lista view.</p>"
   );
 
 
   $templateCache.put('views/gerarador.html',
-    "<form name=\"formGerador\"> <div layout=\"row\" layout-wrap layout-align=\"space-between center\"> <div flex=\"30\" flex-order=\"1\" flex-sm=\"55\"> <md-datepicker ng-model=\"gerador.sprint.dataInicio\" md-placeholder=\"Data do início do Sprint\" md-min-date=\"gerador.dataMin\" md-max-date=\"gerador.dataMax\" required></md-datepicker> </div> <div flex=\"40\" flex-order=\"2\" flex-sm=\"45\"> <md-input-container> <label>Quantidade de dias</label> <input ng-model=\"gerador.sprint.dias\" type=\"number\" max=\"14\" min=\"1\" required> </md-input-container> </div> <div flex=\"26\" flex-order=\"3\" flex-sm=\"100\"> <md-checkbox ng-model=\"gerador.sprint.usarDiasUteis\" aria-label=\"Usar dias úteis\"> Considerar dias úteis </md-checkbox> </div> <div flex=\"30\" flex-order=\"4\" flex-sm=\"55\"> <md-datepicker ng-model=\"gerador.sprint.dataFim\" md-placeholder=\"Data do fim do Sprint\" disabled></md-datepicker> </div> <div flex=\"70\" flex-order=\"5\" flex-sm=\"45\"> <md-input-container> <label>Quantidade de pontos</label> <input ng-model=\"gerador.sprint.pontos\" type=\"number\" max=\"999\" min=\"1\" disabled> </md-input-container> </div> </div> </form> <div class=\"table-responsive\"> <table class=\"table table-striped\" ng-if=\"gerador.sprint.estorias\"> <thead> <tr> <th>Estoria</th> <th>Pontos</th> <th>Tasks</th> <th>Data de entrega</th> </tr> </thead> <tbody> <tr ng-repeat=\"estoria in gerador.sprint.estorias\"> <td>{{estoria.nome}}</td> <td>{{estoria.pontos}}</td> <td>{{estoria.tasks}}</td> <td>{{estoria.data | date: 'dd/MM'}} <!-- <md-input-container>\n" +
+    "<form name=\"formGerador\"> <div layout=\"row\" layout-wrap layout-align=\"space-between center\"> <div flex=\"30\" flex-order=\"1\" flex-sm=\"60\"> <md-datepicker ng-model=\"gerador.sprint.dataInicio\" md-placeholder=\"Data do início do Sprint\" md-min-date=\"gerador.dataMin\" md-max-date=\"gerador.dataMax\" required></md-datepicker> </div> <div flex=\"40\" flex-order=\"2\" flex-sm=\"40\"> <md-input-container> <label>Quantidade de dias</label> <input ng-model=\"gerador.sprint.dias\" type=\"number\" max=\"14\" min=\"1\" required> </md-input-container> </div> <div flex=\"30\" flex-order=\"3\" flex-sm=\"100\"> <md-checkbox ng-model=\"gerador.sprint.usarDiasUteis\" aria-label=\"Usar dias úteis\"> Considerar dias úteis </md-checkbox> </div> <div flex=\"30\" flex-order=\"4\" flex-sm=\"60\"> <md-datepicker ng-model=\"gerador.sprint.dataFim\" md-placeholder=\"Data do fim do Sprint\" disabled></md-datepicker> </div> <div flex=\"70\" flex-order=\"5\" flex-sm=\"40\"> <md-input-container> <label>Quantidade de pontos</label> <input ng-model=\"gerador.sprint.pontos\" type=\"number\" max=\"999\" min=\"1\" disabled> </md-input-container> </div> </div> </form> <div class=\"table-responsive\"> <table class=\"table table-striped\" ng-if=\"gerador.sprint.estorias\"> <thead> <tr> <th>Estoria</th> <th>Pontos</th> <th>Tasks</th> <th>Data de entrega</th> </tr> </thead> <tbody> <tr ng-repeat=\"estoria in gerador.sprint.estorias\"> <td>{{estoria.nome}}</td> <td>{{estoria.pontos}}</td> <td>{{estoria.tasks}}</td> <td>{{estoria.data | date: 'dd/MM'}} <!-- <md-input-container>\n" +
     "\t\t\t\t\t  <input type=\"text\" value=\"{{estoria.data |  date: 'dd/MM'}}\" />\n" +
     "\t\t\t\t\t</md-input-container> --> </td> <!-- <td>\n" +
     "\t\t\t\t\t<md-button class=\"md-icon-button\" aria-label=\"Settings\">\n" +

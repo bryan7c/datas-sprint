@@ -22,32 +22,32 @@ angular
   ])
   .config(function ($routeProvider) {
 	$routeProvider
-	  .when('/main', {
+	.when('/main', {
 		templateUrl: 'views/main.html',
 		controller: 'MainCtrl',
 		controllerAs: 'main'
-	  })
-	  .when('/about', {
+	})
+	.when('/about', {
 		templateUrl: 'views/about.html',
 		controller: 'AboutCtrl',
 		controllerAs: 'about'
-	  })
-	  .when('/', {
+	})
+	.when('/', {
 		templateUrl: 'views/gerarador.html',
 		controller: 'GeraradorCtrl',
 		controllerAs: 'gerador'
-	  })
-	  .when('/gerador', {
+	})
+	.when('/gerador', {
 		templateUrl: 'views/gerarador.html',
 		controller: 'GeraradorCtrl',
 		controllerAs: 'gerador'
-	  })
-	  .when('/contact', {
-		templateUrl: 'views/contact.html',
-		controller: 'ContactCtrl',
-		controllerAs: 'contact'
-	  })
-	  .otherwise({
+	})
+	.when('/gerador-by-lista', {
+		templateUrl: 'views/gerador-by-lista.html',
+		controller: 'GeradorByListaCtrl',
+		controllerAs: 'geradorByLista'
+	})
+	.otherwise({
 		redirectTo: '/gerador'
-	  });
+	});
   });

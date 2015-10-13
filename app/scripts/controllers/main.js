@@ -14,4 +14,16 @@ angular.module('datasSprintApp')
       'AngularJS',
       'Karma'
     ];
+    this.menu = [
+    	{
+    		title: "Criar Sprint",
+    		active: false,
+    		link: "#/gerador"
+    	},
+    	{
+    		title: "Gerar por lista",
+    		active: false,
+    		link: "#/gerador-by-lista"
+    	}
+    ];
   });
