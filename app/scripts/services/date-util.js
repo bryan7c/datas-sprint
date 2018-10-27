@@ -12,8 +12,8 @@ angular.module('datasSprintApp')
     // AngularJS will instantiate a singleton by calling "new" on this function
     var holidayDetail = [],
     	holidayDateStringList = [];
-
-    $http.get("http://services.sapo.pt/Holiday/GetNationalHolidays?year=2015").success(function(data){
+	var date = new Date();
+    $http.get("http://services.sapo.pt/Holiday/GetNationalHolidays?year="+date.getFullYear()).then(function(data){
 		parserFeriados(data);
 	});
 
